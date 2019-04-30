@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 
 from zipfile import ZipFile
@@ -19,9 +19,9 @@ def package_sfx(target_filepath, sfx_filepath, dir0, entry):
     :return:
     '''
 
-# Path=.\temp\r
-# Overwrite=1\r
-#
+    # Path=.\temp\r
+    # Overwrite=1\r
+    #
     sfx_config = ''';The comment below contains SFX script commands\r
 Setup={}\r
 TempMode\r
@@ -29,14 +29,14 @@ Silent=1\r
 '''.format(entry)
 
     files = []
-    for root,sub, fs in os.walk(dir0):
+    for root, sub, fs in os.walk(dir0):
         if not root.startswith(dir0):
             raise ValueError("{} not startswith {}".format(root, dir0))
         sub_root = root[len(dir0)::]
         for f in fs:
             # (absolute path, filename in zip)
-            files.append((os.path.join(root,f),
-                          os.path.join(sub_root,f)))
+            files.append((os.path.join(root, f),
+                          os.path.join(sub_root, f)))
 
     with open(target_filepath, "wb") as fw:
         with open(sfx_filepath, "rb") as fr:
@@ -49,9 +49,8 @@ Silent=1\r
 
 
 def main():
-   pass
+    pass
 
 
 if __name__ == '__main__':
     main()
-
