@@ -1,10 +1,12 @@
 package main
 
 import (
+    "archive/zip"
     "fmt"
     "io"
     "os"
     "path/filepath"
+    "strings"
 )
 type ZipFilePath struct {
     FullPath string
