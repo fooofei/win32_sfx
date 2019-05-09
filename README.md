@@ -11,11 +11,28 @@ make self extracting file run on Windows
 - 7-ZIP SFX 格式 https://blog.csdn.net/hxbb00/article/details/79055964
 
 
+## 借助WinRAR等价实现
+```
+=> pack to sfx
+<winrar.exe> -y a -afzip -ep1 -sfxzip.sfx <dst file path>
+  <files to pack> -z"<comment file path>" -iicon"<icon file path>"
+  
+-y -> 所有回答都是 yes
+a 向压缩包内添加文件
+-afzip zip格式。 rar.exe 只支持 RAR 格式，winrar.exe 支持 RAR和ZIP 格式
+-ep1 是压缩包内路径的处理方式，响应的有 ep2 ep 等
+-z 是压缩包的注释
+
+=> change name in zip
+<winrar.exe> rn <dst file path> <src name in zip> <dst name in zip>
+```
 
 ## 有了 SFX 文件，你可能需要修改 PE 文件的能力
 
 - [C++] https://github.com/TACIXAT/portable-executable-library
 - [C++] https://github.com/trailofbits/pe-parse
-- [python] [需要跟 MSVC 协作使用，不算跨平台] https://github.com/avast/pe_tools
-- [python] [未验证] https://github.com/kd8bny/pedit
-- [python] https://github.com/erocarrera/pefile
+- [python][需要跟 MSVC 协作使用，不算跨平台] https://github.com/avast/pe_tools
+- [python][未验证] https://github.com/kd8bny/pedit
+- [python][只能打印一堆信息]https://github.com/erocarrera/pefile
+
+- [golang][需要适配golang 1.12][没找到感兴趣的]https://github.com/soluwalana/pefile-go
